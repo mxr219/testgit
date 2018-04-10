@@ -1,0 +1,71 @@
+CREATE TABLE t_bookType(
+	id int primary key auto_increment,
+	bookTypeName varchar(20),
+	bookTypeDemo varchar(200)
+);
+
+
+
+CREATE TABLE t_book(
+	id int  primary key auto_increment,
+	bookname varchar(20),
+	author varchar(10),
+	price decimal(6,2),
+	bookTypeId int ,
+	constraint `fk` foreign key (`bookTypeId` ) references `t_bookType`(`id`)
+);
+
+desc t_bookType;
+
+show create table t_bookType;
+
+
+alter table t_bookType rename t_book2;
+
+alter table t_bookType change bookname bookname2 varchar(20);
+
+alter table t_bookType add  bookname2 int after author;（某个字段加）
+
+alter table t_bookType add  bookname2 int first ;(第一个)
+
+alter table t_bookType drop author ;
+
+drop table t_book;
+
+
+
+CREATE TABLE t_stu(
+	ID INT PRIMARY KEY auto_increment,
+         stuname VARCHAR(20),
+         geadename VARCHAR(10)
+);
+INSERT INTO t_stu (ID,stuname ,geadename) VALUES ('1','马云','一年级'); 
+INSERT INTO t_stu (ID,stuname ,geadename) VALUES ('2','云南','二年级');
+INSERT INTO t_stu (ID,stuname ,geadename) VALUES ('3','马男','三年级'); 
+
+SELECT ID,stuname,geadename FROM t_stu ;
+
+SELECT * FROM t_stu WHERE ID IN(2,30);
+
+SELECT * FROM t_stu WHERE NOT ID IN(2,30);
+
+SELECT * FROM t_stu WHERE ID BEWTEEN(2,30);
+SELECT * FROM t_stu WHERE ID NOT BEWTEEN(2,30);
+
+SELECT * FROM t_stu WHERE stuname like '马云'；
+SELECT * FROM t_stu WHERE stuname like '马云%'；任意含有字符的
+SELECT * FROM t_stu WHERE stuname like '马云_'； _代表一个字符
+SELECT * FROM t_stu WHERE stuname like '%马云%'；前后任意含有字符的
+
+SELECT * FROM t_stu WHERE  ID IS NULL;
+
+SELECT * FROM t_stu WHERE  ID =1 AND stuname = 马云' ;    //两个条件同时筛选
+SELECT * FROM t_stu WHERE  ID =1 OR stuname = 马云'  ;   //两个条件满足一个
+
+SELECT * FROM t_stu WHERE  ORDER BY ID ASC;    //升序排序
+SELECT * FROM t_stu WHERE  ORDER BY ID DESC;   //降序排序
+
+
+
+
+ SELECT gradename ,count(stuname)FROM t_stu  Group By gradename; //计算各年级的人数总数
