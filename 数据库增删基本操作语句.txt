@@ -1,0 +1,15 @@
+NSERT INTO t_book VALUES(NULL,'我爱我家',20,'张三',1);
+
+INSERT INTO t_book(id,bookName,price,author,bookTypeId) VALUES(NULL,'我爱我家',20,'张三',1);
+
+INSERT INTO t_book(bookName,author) VALUES('我爱我家','张三');
+
+INSERT INTO t_book(id,bookName,price,author,bookTypeId) VALUES (NULL,'我爱我家2',20,'张三',1),(NULL,'我爱我家3',20,'张三',1);
+
+UPDATE t_book SET bookName='Java编程思想',price=120 WHERE id=1;
+
+UPDATE t_book SET bookName='我' WHERE bookName LIKE '%我爱我家%';
+
+DELETE FROM t_book WHERE id=5;
+
+DELETE FROM t_book WHERE bookName='我';
